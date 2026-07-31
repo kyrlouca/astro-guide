@@ -1,0 +1,26 @@
+---
+
+import Layout from "../../layout/BaseLayout.astro";
+import { getCollection } from 'astro:content';
+import type { BookI } from '../../BookInterface';
+const cBooks = await getCollection('books');
+const allBooks= cBooks.map((book) => book.data as BookI);
+
+import BookCard from "../components/BookCard.astro";
+
+---
+
+<Layout>
+  <div>
+    <h1>BOOKS</h1>
+    <p class="tt">Here are sosssme great books 33to read!</p>
+    {allBooks.map((book) => <BookCard book={book} />)}
+    {allBooks.length === 0 && <p>No books available.</p>}
+  </div>
+
+  <style>
+    .tt {
+      color: blue;
+    }
+  </style>
+</Layout>

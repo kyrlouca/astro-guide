@@ -1,0 +1,29 @@
+---
+
+import type { CollectionEntry } from 'astro:content';
+import  type {BookI } from '../../BookInterface';
+
+interface Props {
+  book: BookI;
+}
+
+const {book} = Astro.props as Props;
+---
+
+<div class="book-card">
+  <h1>{book.title}</h1>
+  <h2>Author: {book.author}</h2>
+</div>
+<style>
+  .book-card {
+    box-shadow: 5px 4px 0px lightgray;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    color: red;
+    font-size: 10px;
+    margin-bottom: 1rem;
+  }
+  .tt {
+    color: blue;
+  }
+</style>

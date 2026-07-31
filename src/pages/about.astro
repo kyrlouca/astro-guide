@@ -1,0 +1,18 @@
+---
+import Layout from "../layout/BaseLayout.astro";
+const title = "About title";
+const description = { name: "About description", content: "About content" };
+const getUser = () => {
+  const age = Math.floor(Math.random() * 100);
+  return age > 50 ? null : { name: "Jane Smith", age: age};
+  
+};
+const user = getUser();
+---
+
+<Layout>
+  <h1>About 3cal 33 ss:{title}</h1>
+  <p>{description.content}</p>
+  {user && "name" && user.name}
+  {user && "age" && user.age}
+</Layout>

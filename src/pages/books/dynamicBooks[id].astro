@@ -1,0 +1,69 @@
+---
+import Layout from "../../layout/BaseLayout.astro";
+import { getCollection,render } from "astro:content";
+import type { BookI } from "../../BookInterface";
+
+const cBooks = await getCollection("mkBooks");
+const allBooks = cBooks.map((book) => book.data as BookI);
+
+import BookCard from "../components/BookCard.astro";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const cBooks = await getCollection("mkBooks");
+  return cBooks.map(book => ({
+    params: { id: book.id },
+    props: { book: book },
+  }));
+}
+
+const { book } = Astro.props;
+const { Content } = await render(book);
+
+---
+
+<Layout>
+  <button class="back-button" type="button" aria-label="Go back" onclick="history.back()">
+    <span aria-hidden="true">←Back </span>
+    <a href="/books/bookList" aria-hidden="true">←Back </a>
+    
+  </button>
+  <p>SINGLE BOOK {}</p>
+  <div>
+    id: {Astro.params.id} <br />
+    book.title: {book.data.title} - book.author: {book.data.author} <br />
+    <Content />
+    
+  </div>
+
+  <style>
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      padding: 0.4rem 0;
+      border: 0;
+      border-radius: 4px;
+      background: transparent;
+      color: #1d4ed8;
+      cursor: pointer;
+      font: inherit;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      color: #1e40af;
+      text-decoration: none;
+    }
+
+    .back-button a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .tt {
+      color: blue;
+    }
+  </style>
+</Layout>

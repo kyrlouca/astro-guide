@@ -1,0 +1,37 @@
+[
+	{
+		"id": "1",
+		"name": "to-kill-a-mockingbird",
+		"title": "To Kill a Mockingbird",
+		"author": "Harper Lee",
+		"age": 64
+	},
+	{
+		"id": "2",
+		"name": "nineteen-eighty-four",
+		"title": "1984",
+		"author": "George Orwell",
+		"age": 76
+	},
+	{
+		"id": "3",
+		"name": "pride-and-prejudice",
+		"title": "Pride and Prejudice",
+		"author": "Jane Austen",
+		"age": 210
+	},
+	{
+		"id": "4",
+		"name": "the-great-gatsby",
+		"title": "The Great Gatsby",
+		"author": "F. Scott Fitzgerald",
+		"age": 99
+	},
+	{
+		"id": "5",
+		"name": "thesss-hobbit",
+		"title": "The333 Hobbit",
+		"author": "J.R.R. Tolkien",
+		"age": 86
+	}
+]
