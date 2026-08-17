@@ -5,15 +5,15 @@ import type { BookI } from "../../BookInterface";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const cBooks = await getCollection("mkBooks");
-  return cBooks.map(book => ({
+  const xBooks = await getCollection("mkBooks");
+  return xBooks.map(book => ({
     params: { id: book.id },
     props: { book: book },
   }));
 }
 
-const cBooks = await getCollection("mkBooks");
-const allBooks = cBooks.map((book) => book.data as BookI);
+// const cBooks = await getCollection("mkBooks");
+// const allBooks = cBooks.map((book) => book.data as BookI);
 
 import BookCard from "../components/BookCard.astro";
 

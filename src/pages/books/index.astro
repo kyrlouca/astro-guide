@@ -6,7 +6,7 @@ import type { BookI } from '../../BookInterface';
 const cBooks = await getCollection('books');
 const allBooks= cBooks.map((book) => book.data as BookI);
 
-import BookCard from "../components/BookCard.astro";
+import BookCard from "../../components/BookCard.astro";
 
 ---
 

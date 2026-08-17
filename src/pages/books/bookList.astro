@@ -1,15 +1,11 @@
 ---
 import Layout from "../../layout/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import type { BookI } from "../../BookInterface";
-
 const cBooks = await getCollection("mkBooks");
-
-import BookCard from "../components/BookCard.astro";
 ---
 
 <Layout>
-  <div>
+  <div> 
     <h1>BOOKS</h1>
     <p class="tt">Book List</p>
     {
