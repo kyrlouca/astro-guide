@@ -4,7 +4,7 @@ import { glob, file } from "astro/loaders";
 
 
 const books = defineCollection({
-  loader: file("src/data/books.json"),
+  loader: file("src/content/books.json"),
   schema: z.object({
     id: z.string(),
     name: z.string(),
@@ -15,7 +15,7 @@ const books = defineCollection({
 });
 
 const mkBooks = defineCollection({
-  loader: glob({ base: "./src/data/books", pattern: "**/*.{md,mdx}" }),
+  loader: glob({ base: "./src/content/books", pattern: "**/*.{md,mdx}" }),
   schema: z.object({        
     name: z.string(),
     title: z.string(),
