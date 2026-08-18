@@ -1,20 +1,18 @@
 ---
 import Layout from "../../layout/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import BookCard from "../../components/BookCard.astro";
 import type { BookI } from "../../BookInterface";
 
 const cBooks = await getCollection("mkBooks");
-const allBooks = cBooks.map((book) => book.data as BookI);
-
-import BookCard from "../../components/BookCard.astro";
 ---
 
 <Layout>
   <div>
-    <h1>BOOKS</h1>
+    <h1>BOOKS from markdown files</h1>
     <p class="tt">Here are sosssme great books to read!</p>
-    {allBooks.map((book) => <BookCard book={book} />)}
-    {allBooks.length === 0 && <p>No books available.</p>}
+    {cBooks.map((book) => <BookCard book={book.data as BookI} />)}
+    {cBooks.length === 0 && <p>No books available.</p>}
   </div>
 
   <style>

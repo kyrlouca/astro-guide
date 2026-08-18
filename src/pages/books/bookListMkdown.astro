@@ -7,13 +7,13 @@ const cBooks = await getCollection("mkBooks");
 <Layout>
   <div> 
     <h1>BOOKS</h1>
-    <p class="tt">Book List</p>
+    <p class="tt">Book List from mkdown</p>
     {
       cBooks.map((book)=> {
         return (
           <div>
-            Hello title: {book.data.title} 
-            <a href={`/books/dynamicBooks${book.id}`}>{book.data.title}</a>                        
+            Hello title: {book.data.title} #{book.id}#
+            <a href={`/books/dynamicBooks${book.id}`}>{book.data.title}-{book.id}</a>                        
           </div>
         );
       })
