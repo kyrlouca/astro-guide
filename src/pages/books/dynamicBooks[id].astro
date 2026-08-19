@@ -11,7 +11,6 @@ export async function getStaticPaths() {
   }));
 }
 
-import BookCard from "../components/BookCard.astro";
 const { book } = Astro.props;
 const { Content } = await render(book);
 
@@ -20,7 +19,7 @@ const { Content } = await render(book);
 <Layout>
   <button class="back-button" type="button" aria-label="Go back" onclick="history.back()">
     <span aria-hidden="true">←Back </span>
-    <a href="/books/bookList" aria-hidden="true">←Back </a>
+    <a href="/books/bookListMkdown" aria-hidden="true">←Back </a>
     
   </button>
   <p>SINGLE BOOK {}</p>

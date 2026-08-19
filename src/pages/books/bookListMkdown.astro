@@ -1,7 +1,13 @@
 ---
 import Layout from "../../layout/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 const cBooks = await getCollection("mkBooks");
+const renderedBooks = await Promise.all(
+  cBooks.map(async (book) => ({
+    book,
+    Content: (await render(book)).Content,
+  })),
+);
 ---
 
 <Layout>
@@ -9,18 +15,48 @@ const cBooks = await getCollection("mkBooks");
     <h1>BOOKS</h1>
     <p class="tt">Book List from mkdown</p>
     {
-      cBooks.map((book)=> {
+      renderedBooks.map(({ book, Content })=> {
         return (
-          <div>
-            Hello title: {book.data.title} #{book.id}#
-            <a href={`/books/dynamicBooks${book.id}`}>{book.data.title}-{book.id}</a>                        
-          </div>
+          <article class="book-entry">
+            <header>
+              <h2>{book.data.title}</h2>
+              <p>{book.data.author} · {book.data.age} years</p>
+              <a href={`/books/dynamicBooks/${book.id}`}>View book details</a>
+            </header>
+            <div class="book-content">
+              <Content />
+            </div>
+          </article>
         );
       })
     }
+    {cBooks.length === 0 && <p>No books available.</p>}
   </div>
 
   <style>
+    .book-entry {
+      border-top: 1px solid #d7d7d7;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+
+    .book-entry h2 {
+      margin-bottom: 0.25rem;
+    }
+
+    .book-entry p {
+      color: #555;
+      margin-top: 0;
+    }
+
+    .book-entry a {
+      color: #322223;
+    }
+
+    .book-content {
+      max-width: 42rem;
+    }
+
     .tt {
       color: blue;
     }

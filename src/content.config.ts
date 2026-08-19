@@ -26,6 +26,4 @@ const mkBooks = defineCollection({
 });
 
 
-
-
-export const collections = { books, mkBooks };
+export const collections = { books, mkBooks};

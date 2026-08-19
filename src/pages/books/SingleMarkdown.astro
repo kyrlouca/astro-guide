@@ -1,0 +1,20 @@
+---
+import Layout from "../../layout/BaseLayout.astro";
+import { getEntry, render } from "astro:content";
+const book = await getEntry("mkBooks", "the-great-gatsby");
+
+if (!book) {
+  throw new Error("The Great Gatsby Markdown entry was not found.");
+}
+
+const { Content } = await render(book);
+---
+
+<Layout>
+  <article>
+    <h1>{book.data.title}</h1>
+    <p>{book.data.author} · {book.data.age} years</p>
+    <Content />
+    <div>test </div>
+  </article>
+</Layout>

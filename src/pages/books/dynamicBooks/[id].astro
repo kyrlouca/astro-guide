@@ -1,0 +1,25 @@
+---
+import Layout from "../../../layout/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const books = await getCollection("mkBooks");
+
+  return books.map((book) => ({
+    params: { id: book.id },
+    props: { book },
+  }));
+}
+
+const { book } = Astro.props;
+const { Content } = await render(book);
+---
+
+<Layout>
+  <article>
+    <a href="/books/bookListMkdown">Back to all books xx</a>
+    <h1>{book.data.title}</h1>
+    <p>{book.data.author} · {book.data.age} years</p>
+    <Content />
+  </article>
+</Layout>

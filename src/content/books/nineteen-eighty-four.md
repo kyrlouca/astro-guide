@@ -7,4 +7,4 @@ age: 76
 
 # 1984
 
-A tense society under constant surveillance reveals a world where truth can be rewritten and hope is the bravest act.
+A tense *society* under constant surveillance reveals a world where truth can be rewritten and hope is the bravest act.
