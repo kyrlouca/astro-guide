@@ -1,1 +1,13 @@
-<h1>Hello</h1>
+
+---
+import Layout from '../../layout/BaseLayout.astro'
+import { Image } from 'astro:assets';
+import myImage from '/src/content/images/peri-sitari.png'
+---
+
+
+<Layout>
+  <h1>Astro</h1>
+  <h1>Hello</h1>
+  <Image src={myImage} alt="A description of my image." />
+</Layout>   
